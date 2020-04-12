@@ -15,7 +15,7 @@ class Move(NamedTuple):
 Board = Mapping[Position, str]
 
 def find_best_path(board: Board) -> Path:
-    all_paths = map(lambda position: travel(board, position), board.keys())
+    all_paths = [travel(board, position) for position in board.keys()]
     return sorted(all_paths, key=path_weight)[-1]
 
 def path_weight(path: Path) -> int:
